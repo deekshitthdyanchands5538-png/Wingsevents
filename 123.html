@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wings Events - Professional Event Decorations</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+/* Reset & fonts */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat', sans-serif; }
+
+/* Welcome / Hero Screen */
+#welcome {
+    height: 100vh;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+#welcome h1 {
+    font-family:'Playfair Display', serif;
+    font-size:70px;
+    letter-spacing:4px;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+#welcome p {
+    font-size:26px;
+    margin-top:20px;
+}
+
+@keyframes glow {
+    from { text-shadow:0 0 15px white, 0 0 30px #00f2fe; }
+    to { text-shadow:0 0 25px white, 0 0 50px #4facfe; }
+}
+
+/* Main Content */
+#mainContent { display:none; scroll-behavior:smooth; }
+
+header {
+    background:#ffffff;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-family:'Playfair Display', serif;
+    color:#4facfe;
+    font-size:30px;
+}
+
+nav a {
+    text-decoration:none;
+    margin:0 15px;
+    color:#333;
+    font-weight:600;
+    transition:0.3s;
+}
+nav a:hover { color:#4facfe; }
+
+section { padding:80px 20px; text-align:center; }
+
+#home { background:#f0f8ff; }
+#services { background:#e6f0ff; }
+#about { background:#f0f8ff; }
+#contact { background:#e6f0ff; }
+
+h2 { font-family:'Playfair Display', serif; font-size:36px; margin-bottom:20px; color:#333; }
+
+/* Services */
+.service-box {
+    display:inline-block;
+    width:280px;
+    margin:20px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
+    background:white;
+    transition:0.4s;
+}
+.service-box:hover { transform:translateY(-5px); box-shadow:0 10px 25px rgba(0,0,0,0.15); }
+
+.service-box img { width:100%; height:200px; object-fit:cover; }
+.service-box p { padding:15px; font-size:16px; color:#555; }
+
+/* Dropdown */
+select {
+    padding:10px 15px;
+    font-size:16px;
+    border-radius:8px;
+    border:1px solid #4facfe;
+    outline:none;
+    margin-top:20px;
+}
+
+/* About */
+#about p { max-width:700px; margin:20px auto; font-size:18px; color:#555; line-height:1.6; }
+
+/* Contact */
+#contact p { font-size:18px; margin:10px 0; }
+
+/* Footer */
+footer { background:#4facfe; color:white; padding:20px; text-align:center; font-size:16px; }
+
+/* Responsive */
+@media(max-width:900px){
+    .service-box { width:80%; }
+    header { flex-direction:column; }
+    nav { margin-top:10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Welcome Screen -->
+<div id="welcome">
+    <h1>WINGS EVENTS</h1>
+    <p>Professional Balloon & Event Decorations</p>
+</div>
+
+<div id="mainContent">
+<header>
+    <h1>Wings Events</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="home">
+    <h2>Transform Your Event Into a Magical Experience ✨</h2>
+    <p>We specialize in creative balloon decorations and event setups for birthdays, weddings, corporate events, and more. Trusted by hundreds of satisfied clients.</p>
+</section>
+
+<section id="services">
+    <h2>Our Decoration Services 🎈</h2>
+    <p>Select a service to view examples:</p>
+    <select id="serviceSelect" onchange="showImage()">
+        <option value="">--Select Decoration--</option>
+        <option value="birthday">Birthday Decorations</option>
+        <option value="wedding">Wedding Decorations</option>
+        <option value="baby">Baby Shower</option>
+        <option value="anniversary">Anniversary</option>
+        <option value="corporate">Corporate Events</option>
+        <option value="balloon">Balloon Arches</option>
+    </select>
+
+    <div class="service-box">
+        <img id="serviceImage" src="" alt="" style="display:none;">
+        <p id="serviceDesc"></p>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Wings Events</h2>
+    <p>Wings Events is a trusted professional decoration company, bringing creativity, precision, and elegance to every event. 
+    With years of experience and hundreds of successful events, we guarantee a memorable and beautiful celebration for you and your guests.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact Us 📞</h2>
+    <p>Phone: +91 9886201499</p>
+   
+    <p>Location:singasanda banglore, India</p>
+</section>
+
+<footer>
+    <p>© 2026 Wings Events. All Rights Reserved.</p>
+</footer>
+</div>
+
+<script>
+// Welcome screen timer
+setTimeout(function(){
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+}, 3000);
+
+// Service images
+const serviceImages = {
+    birthday: { src:"https://i.ibb.co/0FzR6vL/birthday.jpg", desc:"Theme birthday setups with balloons and lights." },
+    wedding: { src:"https://i.ibb.co/Yh3s6yH/wedding.jpg", desc:"Elegant wedding stage and venue decoration." },
+    baby: { src:"https://i.ibb.co/7yKK3FV/baby-shower.jpg", desc:"Creative baby shower balloon themes." },
+    anniversary: { src:"https://i.ibb.co/6Hn9pMF/anniversary.jpg", desc:"Romantic anniversary decorations." },
+    corporate: { src:"https://i.ibb.co/dQD98Cm/corporate.jpg", desc:"Professional corporate event setups." },
+    balloon: { src:"https://i.ibb.co/b6cP1c7/balloon-arches.jpg", desc:"Custom balloon arches and backdrops." }
+};
+
+function showImage() {
+    const select = document.getElementById("serviceSelect");
+    const img = document.getElementById("serviceImage");
+    const desc = document.getElementById("serviceDesc");
+    const value = select.value;
+
+    if(value && serviceImages[value]){
+        img.src = serviceImages[value].src;
+        img.style.display = "block";
+        img.alt = select.options[select.selectedIndex].text;
+        desc.textContent = serviceImages[value].desc;
+    } else {
+        img.style.display = "none";
+        desc.textContent = "";
+    }
+}
+</script>
+
+</body>
+</html>
